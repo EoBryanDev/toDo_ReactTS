@@ -22,3 +22,15 @@ Implementado: GlobalTheme, ThemeProvider, Theme
 ### Material Icons
 
 Link: (<https://mui.com/material-ui/material-icons/>)
+
+### Vitest 0.26.2
+
+Link: (<https://vitest.dev/guide/>)
+
+### React Router Dom v6.6.1
+
+Link: (<https://reactrouter.com/en/main/start/tutorial>)
+
+### Redux Toolkit 1.9.1
+
+Link: (<https://redux-toolkit.js.org/tutorials/quick-start>)
