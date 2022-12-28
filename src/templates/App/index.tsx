@@ -5,14 +5,17 @@ import MainContainer from '../../components/MainContainer'
 import ToDoContainer from '../../components/ToDoContainer'
 import Header from '../../components/Header'
 import { useState } from 'react'
-import { Item } from '../../types/Item'
+import { Item } from '../../types/Item';
 import ListItem from '../../components/ListItem';
+
+
 
 function App() {
   const [list, setList] = useState<Item[]>([
     {id: 1, name: 'Comprar pao', done: false},
-    {id: 2, name: 'Comprar manteiga', done: false}
+    {id: 2, name: 'Comprar manteiga', done: true}
   ])
+  
   return (
     // Redux Toolkit | Exportar config.json do vscode
     <ThemeProvider theme={defaultTheme}>
@@ -22,8 +25,8 @@ function App() {
           {/* Adicionar Nova tarefa */}
 
           {/* Lista de Tarefas */}
-          {list.map((item) => (
-            <ListItem key={item.id} item={item} />
+          {list.map((item, index) => (
+            <ListItem key={index} item={item} />
           ))}
         </ToDoContainer>
       </MainContainer>
