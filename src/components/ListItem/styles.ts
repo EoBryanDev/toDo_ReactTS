@@ -24,6 +24,16 @@ export const Item = styled.div(
         color: #CCC;
         text-decoration: ${done ? 'line-through': 'initial'};
     }
+    .edit {
+        width: 50%;
+        padding: 10px;
+        border: 1px solid #555;
+        border-radius: 5px;
+        border: 0;
+        outline: 0;
+        background: rgba(255,255,255,0.2);
+        color: yellow;
+    }
     .excludeItem:hover{
         color: red;
     }

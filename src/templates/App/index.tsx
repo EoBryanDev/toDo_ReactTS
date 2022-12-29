@@ -25,27 +25,34 @@ function App() {
     })
     setList(newList)
   }
-  const handleDeleteTask = (id : number) => {
+  const handleEditTask = (id: number, name: string) => {
+    const newList = [...list];
+    console.log(newList);
     
+    for(const i in newList) {
+      if(newList[i].id === id) {
+        newList[i].name = name;
+      }
+    }
+    setList(newList)
+  }
+  const handleDeleteTask = (id : number) => {
     const newList = list.filter(item => (
         item.id != id
     ))
     setList(newList)
     
   }
-  const handleDoneTask = (id: number) => {
-    console.log(list);
+  const handleDoneTask = (id: number, done: boolean) => {
+    const newList = [...list];
+    console.log(newList);
     
-    const itemDone = list.filter(itemDone => (
-        itemDone.id === id
-    ))
-    console.log(itemDone);
-    
-    /* setList(prevState => { 
-        return {...prevState, itemDone}
-    }) */
-
-    
+    for(const i in newList) {
+      if(newList[i].id === id) {
+        newList[i].done = done;
+      }
+    }
+    setList(newList)
   }
   
   return (
@@ -59,7 +66,7 @@ function App() {
 
           {/* Lista de Tarefas */}
           {showList.map((item, index) => (
-            <ListItem key={index} item={item} onDelete={handleDeleteTask} />
+            <ListItem key={index} item={item} onDelete={handleDeleteTask} onChange={handleDoneTask} onEdit={handleEditTask} />
           ))}
         </ToDoContainer>
       </MainContainer>

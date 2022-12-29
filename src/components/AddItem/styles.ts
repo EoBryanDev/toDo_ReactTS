@@ -8,6 +8,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
 
+
     input {
         border: 0;
         outline: 0;
