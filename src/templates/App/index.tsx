@@ -7,14 +7,23 @@ import Header from '../../components/Header'
 import { useState } from 'react'
 import { Item } from '../../types/Item';
 import ListItem from '../../components/ListItem';
+import AddItem from '../../components/AddItem';
 
 
 
 function App() {
   const [list, setList] = useState<Item[]>([
-    {id: 1, name: 'Comprar pao', done: false},
-    {id: 2, name: 'Comprar manteiga', done: true}
   ])
+
+  const handleAddTask = (taskLabel: string) => {
+    const newList = [...list]
+    newList.push({
+        id: list.length + 1,
+        name: taskLabel,
+        done: false
+    })
+    setList(newList)
+  }
   
   return (
     // Redux Toolkit | Exportar config.json do vscode
@@ -23,6 +32,7 @@ function App() {
         <ToDoContainer>
           <Header>Lista de Tarefas</Header>
           {/* Adicionar Nova tarefa */}
+          <AddItem onEnter={handleAddTask} />
 
           {/* Lista de Tarefas */}
           {list.map((item, index) => (
