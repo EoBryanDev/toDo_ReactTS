@@ -12,6 +12,8 @@ export const Item = styled.div(
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 10px;
+    justify-content: space-around;
+    align-items: center;
     input {
         width: 25px;
         height: 25px;
@@ -21,6 +23,9 @@ export const Item = styled.div(
     label {
         color: #CCC;
         text-decoration: ${done ? 'line-through': 'initial'};
+    }
+    .excludeItem:hover{
+        color: red;
     }
     `,
 )

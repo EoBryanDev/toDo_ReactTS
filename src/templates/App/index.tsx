@@ -4,7 +4,7 @@ import defaultTheme from '../../styles/defaultTheme'
 import MainContainer from '../../components/MainContainer'
 import ToDoContainer from '../../components/ToDoContainer'
 import Header from '../../components/Header'
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { Item } from '../../types/Item';
 import ListItem from '../../components/ListItem';
 import AddItem from '../../components/AddItem';
@@ -14,6 +14,7 @@ import AddItem from '../../components/AddItem';
 function App() {
   const [list, setList] = useState<Item[]>([
   ])
+  const showList = useMemo(() => list, [list])
 
   const handleAddTask = (taskLabel: string) => {
     const newList = [...list]
@@ -23,6 +24,28 @@ function App() {
         done: false
     })
     setList(newList)
+  }
+  const handleDeleteTask = (id : number) => {
+    
+    const newList = list.filter(item => (
+        item.id != id
+    ))
+    setList(newList)
+    
+  }
+  const handleDoneTask = (id: number) => {
+    console.log(list);
+    
+    const itemDone = list.filter(itemDone => (
+        itemDone.id === id
+    ))
+    console.log(itemDone);
+    
+    /* setList(prevState => { 
+        return {...prevState, itemDone}
+    }) */
+
+    
   }
   
   return (
@@ -35,8 +58,8 @@ function App() {
           <AddItem onEnter={handleAddTask} />
 
           {/* Lista de Tarefas */}
-          {list.map((item, index) => (
-            <ListItem key={index} item={item} />
+          {showList.map((item, index) => (
+            <ListItem key={index} item={item} onDelete={handleDeleteTask} />
           ))}
         </ToDoContainer>
       </MainContainer>

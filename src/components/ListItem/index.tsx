@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import * as Styled from './styles'
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 type Item = {
   id: number
@@ -9,9 +10,10 @@ type Item = {
 
 type Props = {
   item: Item
+  onDelete : (id : number) => void
 }
 
-const ListItem = ({ item }: Props) => {
+const ListItem = ({ item, onDelete }: Props) => {
   const [isChecked, setIsChecked] = useState(item.done)
   return (
     <Styled.Item done={isChecked}>
@@ -21,6 +23,7 @@ const ListItem = ({ item }: Props) => {
       onChange={e => setIsChecked(e.target.checked)} 
       />
       <label>{item.name}</label>
+      <DeleteForeverIcon className='excludeItem' onClick={() => onDelete(item.id)} />
     </Styled.Item>
   )
 }
